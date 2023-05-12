@@ -1,0 +1,23 @@
+services:
+    django-srv:
+        container_name: django-srv
+        build:
+          context: .
+          dockerfile: docker/Dockerfile
+        environment:
+            - DJANGO_PORT=${DJANGO_PORT}
+        ports:
+            - "${DJANGO_PORT}:${DJANGO_PORT}"
+        volumes:
+            - ./src:/opt/pistosi-sbx/src
+    database:
+        container_name: postgres
+        image: postgres
+        environment:
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        ports:
+            - "${POSTGRES_PORT}:5432"
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
