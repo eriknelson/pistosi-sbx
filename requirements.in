@@ -1,3 +1,4 @@
 django==3.2.18
 django-environ==0.10.0
 psycopg2==2.9.6
+dj-stripe@https://github.com/xclnky/dj-stripe/archive/2.3.0-base.zip
