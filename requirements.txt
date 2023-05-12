@@ -8,6 +8,10 @@ asgiref==3.6.0
     # via django
 django==3.2.18
     # via -r ./requirements.in
+django-environ==0.10.0
+    # via -r ./requirements.in
+psycopg2==2.9.6
+    # via -r ./requirements.in
 pytz==2023.3
     # via django
 sqlparse==0.4.4
