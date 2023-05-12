@@ -1,2 +1,4 @@
 #!/bin/sh
-python -c 'print("Not implemented.")'
+
+cd /opt/pistosi-sbx
+python ./src/manage.py runserver 0.0.0.0:${DJANGO_PORT}
