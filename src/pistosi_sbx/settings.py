@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import environ
+import os
+
+env = environ.Env(
+    POSTGRES_USER=str,
+    POSTGRES_PASSWORD=str,
+    POSTGRES_DB=str,
+    POSTGRES_HOST=str,
+    POSTGRES_PORT=str,
+    SECRET_KEY=str,
+)
+
+environ.Env.read_env(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..') + '/.env')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*_u3a0_26wcl!d60846%_d232g0wjl=2r9+go2z)el_8*)d+mm'
+# SECRET_KEY = 'django-insecure-*_u3a0_26wcl!d60846%_d232g0wjl=2r9+go2z)el_8*)d+mm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,8 +89,15 @@ WSGI_APPLICATION = 'pistosi_sbx.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
+        'OPTIONS': {
+            'connect_timeout': 5,
+        }
     }
 }
 
