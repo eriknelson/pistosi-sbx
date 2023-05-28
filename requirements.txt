@@ -27,6 +27,8 @@ loguru==0.7.0
     # via -r ./requirements.in
 psycopg2==2.9.6
     # via -r ./requirements.in
+python-dotenv==1.0.0
+    # via -r ./requirements.in
 pytz==2023.3
     # via django
 requests==2.30.0

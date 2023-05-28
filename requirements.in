@@ -3,4 +3,5 @@ django-environ==0.10.0
 psycopg2==2.9.6
 stripe==5.4.0
 loguru==0.7.0
+python-dotenv==1.0.0
 dj-stripe@https://github.com/xclnky/dj-stripe/archive/2.3.0-base.zip
